@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asp.Net5-WebApi-OData8", "Asp.Net5-WebApi-OData8\Asp.Net5-WebApi-OData8.csproj", "{22C4CDEC-ECD1-4C0F-AD6F-8C0319670DD1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{22C4CDEC-ECD1-4C0F-AD6F-8C0319670DD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22C4CDEC-ECD1-4C0F-AD6F-8C0319670DD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22C4CDEC-ECD1-4C0F-AD6F-8C0319670DD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22C4CDEC-ECD1-4C0F-AD6F-8C0319670DD1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BD208B06-51DF-45C5-BA25-6880F291BFFF}
+	EndGlobalSection
+EndGlobal
