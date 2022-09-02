@@ -76,7 +76,14 @@ namespace Asp.Net5_WebApi_OData8
         public static IEdmModel GetEdmModel()
         {
             ODataConventionModelBuilder modelBuilder = new ODataConventionModelBuilder();
-            modelBuilder.EntitySet<Gadget>("GadgetsOdata");
+            var gadget = modelBuilder.EntitySet<Gadget>("GadgetsOdata").EntityType.HasKey(x => x.Id);
+            //gadget.Collection.Action("GetExample").Returns<IQueryable<Gadget>>();
+
+            var category = modelBuilder.EntitySet<Category>("Categories").EntityType.HasKey(x => x.Id);
+            //category.Collection.Function("GetExample").Returns<IActionResult>();
+            category.Collection.Action("GetExample").Returns<IActionResult>();
+
+
             return modelBuilder.GetEdmModel();
         }
     }
