@@ -14,5 +14,6 @@ namespace Asp.Net5_WebApi_OData8.Data.Context
             //optionsBuilder.UseSqlServer("Data Source=(localdb)\\ProjectsV13;Database=EfContext;User Id=sa; Password=1");
         }
         public DbSet<Gadget> Gadgets { get; set; }
+        public DbSet<Category> Categories { get; set; }
     }
 }
