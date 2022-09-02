@@ -1,64 +1,61 @@
 ﻿using Asp.Net5_WebApi_OData8.Data.Context;
 using Asp.Net5_WebApi_OData8.Data.Entities;
-using Microsoft.AspNetCore.OData;
-//using Microsoft.AspNet.OData.Routing;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.OData.Query;
-using System.Linq;
-using Microsoft.AspNetCore.OData.Results;
 using Microsoft.AspNetCore.OData.Deltas;
-using Microsoft.AspNetCore.OData.Routing;
+using Microsoft.AspNetCore.OData.Query;
+using Microsoft.AspNetCore.OData.Results;
+using System.Linq;
 
 namespace Asp.Net5_WebApi_OData8.Controllers
 {
     //[Route("api/[controller]")]
     //[ApiController]
-    public class GadgetsOdataController : ControllerBase
+    public class CategoriesController : ControllerBase
     {
         private readonly EfContext _efContext;
-        public GadgetsOdataController(EfContext efContext)
+        public CategoriesController(EfContext efContext)
         {
             _efContext = efContext;
         }
 
         [EnableQuery]
-        [HttpGet("Get"), Produces("application/json")]
-        public IQueryable<Gadget> Get()
+        [HttpGet, Produces("application/json")]
+        public IQueryable<Category> Get()
         {
-            return _efContext.Gadgets.AsQueryable();
+            return _efContext.Categories.AsQueryable();
         }
 
         [EnableQuery(AllowedQueryOptions = Microsoft.AspNetCore.OData.Query.AllowedQueryOptions.All)]
-        [HttpGet("GetExample")]
-        public IQueryable<Gadget> GetExample()
+        [HttpGet]
+        public IQueryable<Category> GetExample()
         {
-            return _efContext.Gadgets.AsQueryable();
+            return _efContext.Categories.AsQueryable();
         }
 
-        [HttpGet("Get({key})")]
+        [HttpGet]
         [EnableQuery(AllowedQueryOptions = Microsoft.AspNetCore.OData.Query.AllowedQueryOptions.All)]
-        public SingleResult<Gadget> Get(int key)
+        public SingleResult<Category> Get(int key)
         {
-            var data = _efContext.Gadgets.Where(x => x.Id == key);
-            return SingleResult.Create<Gadget>(data);
+            var data = _efContext.Categories.Where(x => x.Id == key);
+            return SingleResult.Create<Category>(data);
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] Gadget gadget)
+        public IActionResult Post([FromBody] Category category)
         {
-            var data = _efContext.Add(gadget);
+            var data = _efContext.Add(category);
             _efContext.SaveChanges();
             return Ok(data);
         }
 
         [HttpPatch]
-        public IActionResult Patch(int key, [FromBody] Delta<Gadget> gadget)
+        public IActionResult Patch(int key, [FromBody] Delta<Category> category)
         {
-            var entity = _efContext.Gadgets.FirstOrDefault(x => x.Id == key);            
+            var entity = _efContext.Categories.FirstOrDefault(x => x.Id == key);
 
-            gadget.Patch(entity);
-            var data =  _efContext.Update(entity);
+            category.Patch(entity);
+            var data = _efContext.Update(entity);
             _efContext.SaveChanges();
             return Ok(data);
             //if (data.Success) return Ok(data.Message); return BadRequest(data.Message);
@@ -67,11 +64,10 @@ namespace Asp.Net5_WebApi_OData8.Controllers
         [HttpDelete]
         public IActionResult Delete(int key)
         {
-            var data = _efContext.Gadgets.FirstOrDefault(x => x.Id == key);
+            var data = _efContext.Categories.FirstOrDefault(x => x.Id == key);
             _efContext.Remove(data);
             _efContext.SaveChanges();
             return Ok(data);
         }
-
     }
 }
